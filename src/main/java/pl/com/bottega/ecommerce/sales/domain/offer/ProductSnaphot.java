@@ -3,14 +3,14 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class Product {
+public class ProductSnaphot {
 	private String productId;
 	private BigDecimal productPrice;
 	private String productName;
 	private Date productSnapshotDate;
 	private String productType;
 
-	public Product(String productId, BigDecimal productPrice,
+	public ProductSnaphot(String productId, BigDecimal productPrice,
 			String productName, Date productSnapshotDate, String productType) {
 		super();
 		this.productId = productId;
@@ -63,7 +63,7 @@ public class Product {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		ProductSnaphot other = (ProductSnaphot) obj;
 		if (productId == null) {
 			if (other.productId != null)
 				return false;

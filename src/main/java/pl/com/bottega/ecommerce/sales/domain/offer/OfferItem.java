@@ -19,7 +19,7 @@ import java.math.BigDecimal;
 
 public class OfferItem {
 
-	private Product product;
+	private ProductSnaphot productSnapshot;
 
 	private int quantity;
 
@@ -32,14 +32,14 @@ public class OfferItem {
 
 	private BigDecimal discount;
 
-	public OfferItem(Product product, int quantity) {
-		this(product, quantity, null, null);
+	public OfferItem(ProductSnaphot productSnapshot, int quantity) {
+		this(productSnapshot, quantity, null, null);
 	}
 
-	public OfferItem(Product product, int quantity, BigDecimal discount,
+	public OfferItem(ProductSnaphot productSnapshot, int quantity, BigDecimal discount,
 			String discountCause) {
 
-		this.product = product;
+		this.productSnapshot = productSnapshot;
 		this.quantity = quantity;
 		this.discount = discount;
 		this.discountCause = discountCause;
@@ -48,12 +48,12 @@ public class OfferItem {
 		if (discount != null)
 			discountValue = discountValue.subtract(discount);
 
-		this.totalCost = product.getProductPrice()
+		this.totalCost = productSnapshot.getProductPrice()
 				.multiply(new BigDecimal(quantity)).subtract(discountValue);
 	}
 
-	public Product getProduct() {
-		return product;
+	public ProductSnaphot getProductSnapshot() {
+		return productSnapshot;
 	}
 
 	public BigDecimal getTotalCost() {
@@ -82,7 +82,7 @@ public class OfferItem {
 		int result = 1;
 		result = prime * result
 				+ ((discount == null) ? 0 : discount.hashCode());
-		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		result = prime * result + ((productSnapshot == null) ? 0 : productSnapshot.hashCode());
 		result = prime * result + quantity;
 		result = prime * result
 				+ ((totalCost == null) ? 0 : totalCost.hashCode());
@@ -103,10 +103,10 @@ public class OfferItem {
 				return false;
 		} else if (!discount.equals(other.discount))
 			return false;
-		if (product == null) {
-			if (other.product != null)
+		if (productSnapshot == null) {
+			if (other.productSnapshot != null)
 				return false;
-		} else if (!product.equals(other.product))
+		} else if (!productSnapshot.equals(other.productSnapshot))
 			return false;
 		if (quantity != other.quantity)
 			return false;
@@ -126,10 +126,10 @@ public class OfferItem {
 	 * @return
 	 */
 	public boolean sameAs(OfferItem other, double delta) {
-		if (product == null) {
-			if (other.product != null)
+		if (productSnapshot == null) {
+			if (other.productSnapshot != null)
 				return false;
-		} else if (!product.equals(other.product))
+		} else if (!productSnapshot.equals(other.productSnapshot))
 			return false;
 
 		if (quantity != other.quantity)
