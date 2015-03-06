@@ -33,8 +33,8 @@ public class OfferItem {
 		if (discount != null)
 			discountValue = discountValue.subtract(discount.getDiscount().getValue());
 
-		this.totalCost = new Money(productSnapshot.getProductPrice().multiply(new BigDecimal(quantity))
-				.subtract(discountValue));
+		this.totalCost = new Money(productSnapshot.getProductPrice().getValue().
+				multiply(new BigDecimal(quantity)).subtract(discountValue));
 	}
 
 	public OfferItem(ProductSnaphot productSnapshot, int quantity) {
