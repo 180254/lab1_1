@@ -20,20 +20,15 @@ import java.math.BigDecimal;
 public class OfferItem {
 
 	private ProductSnaphot productSnapshot;
-
 	private int quantity;
-
 	private Money totalCost;
-
 	private Discount discount;
 
 	public OfferItem(ProductSnaphot productSnapshot, int quantity) {
 		this(productSnapshot, quantity, null);
 	}
 
-	public OfferItem(ProductSnaphot productSnapshot, int quantity,
-			Discount discount) {
-
+	public OfferItem(ProductSnaphot productSnapshot, int quantity, Discount discount) {
 		this.productSnapshot = productSnapshot;
 		this.quantity = quantity;
 		this.discount = discount;
@@ -42,8 +37,8 @@ public class OfferItem {
 		if (discount != null)
 			discountValue = discountValue.subtract(discount.getDiscount());
 
-		this.totalCost = new Money(productSnapshot.getProductPrice()
-				.multiply(new BigDecimal(quantity)).subtract(discountValue));
+		this.totalCost = new Money(productSnapshot.getProductPrice().multiply(new BigDecimal(quantity))
+				.subtract(discountValue));
 	}
 
 	public ProductSnaphot getProductSnapshot() {
@@ -66,13 +61,10 @@ public class OfferItem {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((discount == null) ? 0 : discount.hashCode());
-		result = prime * result
-				+ ((productSnapshot == null) ? 0 : productSnapshot.hashCode());
+		result = prime * result + ((discount == null) ? 0 : discount.hashCode());
+		result = prime * result + ((productSnapshot == null) ? 0 : productSnapshot.hashCode());
 		result = prime * result + quantity;
-		result = prime * result
-				+ ((totalCost == null) ? 0 : totalCost.hashCode());
+		result = prime * result + ((totalCost == null) ? 0 : totalCost.hashCode());
 		return result;
 	}
 

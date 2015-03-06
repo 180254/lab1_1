@@ -4,14 +4,15 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 public class ProductSnaphot {
+	
 	private String productId;
 	private BigDecimal productPrice;
 	private String productName;
 	private Date productSnapshotDate;
 	private String productType;
 
-	public ProductSnaphot(String productId, BigDecimal productPrice,
-			String productName, Date productSnapshotDate, String productType) {
+	public ProductSnaphot(String productId, BigDecimal productPrice, String productName, Date productSnapshotDate,
+			String productType) {
 		super();
 		this.productId = productId;
 		this.productPrice = productPrice;
@@ -44,14 +45,10 @@ public class ProductSnaphot {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((productId == null) ? 0 : productId.hashCode());
-		result = prime * result
-				+ ((productName == null) ? 0 : productName.hashCode());
-		result = prime * result
-				+ ((productPrice == null) ? 0 : productPrice.hashCode());
-		result = prime * result
-				+ ((productType == null) ? 0 : productType.hashCode());
+		result = prime * result + ((productId == null) ? 0 : productId.hashCode());
+		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
+		result = prime * result + ((productPrice == null) ? 0 : productPrice.hashCode());
+		result = prime * result + ((productType == null) ? 0 : productType.hashCode());
 		return result;
 	}
 
