@@ -24,10 +24,6 @@ public class OfferItem {
 	private Money totalCost;
 	private Discount discount;
 
-	public OfferItem(ProductSnaphot productSnapshot, int quantity) {
-		this(productSnapshot, quantity, null);
-	}
-
 	public OfferItem(ProductSnaphot productSnapshot, int quantity, Discount discount) {
 		this.productSnapshot = productSnapshot;
 		this.quantity = quantity;
@@ -39,6 +35,10 @@ public class OfferItem {
 
 		this.totalCost = new Money(productSnapshot.getProductPrice().multiply(new BigDecimal(quantity))
 				.subtract(discountValue));
+	}
+
+	public OfferItem(ProductSnaphot productSnapshot, int quantity) {
+		this(productSnapshot, quantity, null);
 	}
 
 	public ProductSnaphot getProductSnapshot() {
