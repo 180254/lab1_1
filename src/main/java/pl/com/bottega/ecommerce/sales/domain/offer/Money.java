@@ -56,4 +56,20 @@ public class Money {
 		return true;
 	}
 
+	public boolean sameAs(Money other, double delta) {
+		BigDecimal max, min;
+		if (value.compareTo(other.value) > 0) {
+			max = value;
+			min = other.value;
+		} else {
+			max = other.value;
+			min = value;
+		}
+
+		BigDecimal difference = max.subtract(min);
+		BigDecimal acceptableDelta = max.multiply(new BigDecimal(delta / 100));
+
+		return acceptableDelta.compareTo(difference) > 0;
+	}
+
 }

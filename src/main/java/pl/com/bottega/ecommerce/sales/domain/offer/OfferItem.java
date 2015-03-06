@@ -122,19 +122,7 @@ public class OfferItem {
 		if (quantity != other.quantity)
 			return false;
 
-		BigDecimal max, min;
-		if (totalCost.getValue().compareTo(other.totalCost.getValue()) > 0) {
-			max = totalCost.getValue();
-			min = other.totalCost.getValue();
-		} else {
-			max = other.totalCost.getValue();
-			min = totalCost.getValue();
-		}
-
-		BigDecimal difference = max.subtract(min);
-		BigDecimal acceptableDelta = max.multiply(new BigDecimal(delta / 100));
-
-		return acceptableDelta.compareTo(difference) > 0;
+		return totalCost.sameAs(other.totalCost, delta);
 	}
 
 }
